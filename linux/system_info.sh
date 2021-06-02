@@ -11,54 +11,53 @@ cat /proc/cmdline
 echo ""
 echo "Consoles:"
 cat /proc/consoles
-sleep 1
 echo ""
 echo "Devices:"
 cat /proc/devices
-echo ""
+echo "(Press Enter/Return to continue)"
+read
 echo "Frame Buffer:"
 cat /proc/fb
-sleep 1
 echo ""
 echo "File Systems:"
 cat /proc/filesystems
-sleep 1
 echo ""
 echo "Partitions:"
 cat /proc/partitions
-sleep 1
-echo ""
+echo "(Press Enter/Return to continue)"
+read
 echo "Interrupts:"
 cat /proc/interrupts
-sleep 1
 echo ""
 echo "Software IRQs:"
 cat /proc/softirqs
-sleep 1
-echo ""
+echo "(Press Enter/Return to continue)"
+read
 echo "Load Average:"
 cat /proc/loadavg
-sleep 1
 echo ""
 echo "Modules:"
 cat /proc/modules
-sleep 1
 echo ""
 echo "Misc:"
 cat /proc/misc
-sleep 1
 echo ""
 echo "CPU:"
 cat /proc/cpuinfo
-sleep 1
-echo ""
+echo "(Press Enter/Return to continue)"
+read
 echo "Memory:"
 cat /proc/meminfo
-echo ""
+echo "(Press Enter/Return to continue)"
+read
 echo "Status:"
 cat /proc/stat
 echo ""
 echo "Uptime:"
 cat /proc/uptime
 echo ""
+echo "Users:"
+w
+echo ""
+echo "System Info:"
 uname -a
