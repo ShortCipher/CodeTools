@@ -1,5 +1,11 @@
 Code Tools
-==========
+ ██████╗ ██████╗ ██████╗ ███████╗    ████████╗ ██████╗  ██████╗ ██╗     ███████╗
+██╔════╝██╔═══██╗██╔══██╗██╔════╝    ╚══██╔══╝██╔═══██╗██╔═══██╗██║     ██╔════╝
+██║     ██║   ██║██║  ██║█████╗         ██║   ██║   ██║██║   ██║██║     ███████╗
+██║     ██║   ██║██║  ██║██╔══╝         ██║   ██║   ██║██║   ██║██║     ╚════██║
+╚██████╗╚██████╔╝██████╔╝███████╗       ██║   ╚██████╔╝╚██████╔╝███████╗███████║
+ ╚═════╝ ╚═════╝ ╚═════╝ ╚══════╝       ╚═╝    ╚═════╝  ╚═════╝ ╚══════╝╚══════╝
+================================================================================
 
 A collection of source code tools / scripts.
 
@@ -18,3 +24,8 @@ Copy a script to the folder you want to format and run it:
 ###Notes
 * Scripts only act on .c, .h, and .sh files. This can easily be changed.
 * Scripts scan recursively and act on *ALL* subfolders also!
+
+
+Linux Scripts
+-------------
+* system_info.sh - Display Linux system information.
