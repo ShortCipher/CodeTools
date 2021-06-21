@@ -19,6 +19,7 @@ A collection of source code tools / scripts.
 Formatting Scripts
 ------------------
 * clean_space.sh      - Remove trailing whitespace from code lines.
+* convert_eol.sh      - Convert line endings to UNIX format.
 * convert_to_space.sh - Convert 1 TAB to 8 spaces.
 * convert_to_tabs.sh  - Convert 8 spaces to 1 TAB (start of line only).
 
