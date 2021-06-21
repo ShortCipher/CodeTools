@@ -29,7 +29,8 @@ Copy a script to the folder you want to format and run it:
 	$ ./clean_space.sh
 
 ###Notes
-* Scripts only act on .c, .h, and .sh files. This can easily be changed.
+* Scripts act on .c, .h, .cpp, .hpp, .cxx, .hxx, and .sh files.
+* This can easily be changed.
 * Scripts scan recursively and act on *ALL* subfolders also!
 
 
