@@ -36,4 +36,5 @@ Copy a script to the folder you want to format and run it:
 
 Linux Scripts
 -------------
+* disk_usage.sh  - Display Linux disk usage (for SDA root partition).
 * system_info.sh - Display Linux system information.
