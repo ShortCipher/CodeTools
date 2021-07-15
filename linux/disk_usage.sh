@@ -1,16 +1,13 @@
 #!/bin/bash
 
+# Check root partition
+DISKUSE=`df --type=ext4 | grep sda | grep -o "..%" | grep -o ".."`
+
+# If "quiet" command line option is given, skip extra debug output!
 if [[ $1 != quiet ]]; then
 
 	echo "Linux Disk Usage (github.com/shortcipher)"
 	echo "========================================="
-fi
-
-# Check root partition
-DISKUSE=`df --type=ext4 | grep sda | grep -o "..%" | grep -o ".."`
-
-# If *ANY* command line options, skip extra debug output!
-if [[ $1 != quiet ]]; then
 
 	# Verbose Mode START
 	echo "Checking SDA partitions..."
