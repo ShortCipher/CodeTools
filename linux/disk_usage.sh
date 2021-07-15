@@ -70,13 +70,18 @@ fi
 # Summary
 echo "The root partition is $DISKUSE% full."
 
-# Warnings
-if   [[ $DISKUSE -ge 99 ]]; then
-	echo -e "\n******* CRITICAL: Disk is over 99% full!!! *******"
-elif [[ $DISKUSE -ge 95 ]]; then
-	echo -e "\n***** WARNING: Disk is over 95% full!!! *****"
-elif [[ $DISKUSE -ge 90 ]]; then
-	echo -e "\n*** WARNING: Disk is over 90% full! ***"
-elif [[ $DISKUSE -ge 80 ]]; then
-	echo -e "\nNOTICE: Disk is over 80% full!"
+# Warning Level
+if   [[ $DISKUSE -ge 95 ]]; then
+	SEVERITY="CRITICAL"
+elif [[ $DISKUSE -ge 85 ]]; then
+	SEVERITY="WARNING"
+else
+	SEVERITY="NOTICE"
+fi
+
+# Notify above 75% full
+if [[ $DISKUSE -ge 75 ]]; then
+	WARNING="***** $SEVERITY: Your DISK is $DISKUSE% FULL! *****"
+	echo -e "\n$WARNING"
+	notify-send "$WARNING"
 fi
