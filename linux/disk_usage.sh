@@ -1,13 +1,16 @@
 #!/bin/bash
 
-echo "Linux Disk Usage (github.com/shortcipher)"
-echo "========================================="
+if [[ $1 != quiet ]]; then
+
+	echo "Linux Disk Usage (github.com/shortcipher)"
+	echo "========================================="
+fi
 
 # Check root partition
 DISKUSE=`df --type=ext4 | grep sda | grep -o "..%" | grep -o ".."`
 
 # If *ANY* command line options, skip extra debug output!
-if [[ ! $1 ]]; then
+if [[ $1 != quiet ]]; then
 
 	# Verbose Mode START
 	echo "Checking SDA partitions..."
@@ -68,20 +71,17 @@ if [[ ! $1 ]]; then
 fi
 
 # Summary
-echo "The root partition is $DISKUSE% full."
-
-# Warning Level
-if   [[ $DISKUSE -ge 95 ]]; then
-	SEVERITY="CRITICAL"
-elif [[ $DISKUSE -ge 85 ]]; then
-	SEVERITY="WARNING"
-else
-	SEVERITY="NOTICE"
-fi
+SUMMARY="The root partition is $DISKUSE% full"
+WARNING="***** WARNING: $SUMMARY! *****"
 
 # Notify above 75% full
 if [[ $DISKUSE -ge 75 ]]; then
-	WARNING="***** $SEVERITY: Your DISK is $DISKUSE% FULL! *****"
-	echo -e "\n$WARNING"
+	echo "****************************************************"
+	echo "$WARNING"
+	echo "****************************************************"
+	# Send desktop notification
 	notify-send "$WARNING"
+else
+	# Summary
+	echo "$SUMMARY."
 fi
