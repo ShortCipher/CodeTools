@@ -2,57 +2,65 @@
 
 echo "Linux Disk Usage (github.com/shortcipher)"
 echo "========================================="
-echo "Checking SDA partitions..."
-echo ""
-
-# Display all SDA partitions
-echo "SDA partitions"
-echo "--------------"
-df -h | grep Filesystem
-df -h | grep sda
-echo ""
-
-# Root Partition
-echo "Root Partition"
-echo "--------------"
-df -h | grep Filesystem
-df -h --type=ext4 | grep sda
 
 # Check root partition
 DISKUSE=`df --type=ext4 | grep sda | grep -o "..%" | grep -o ".."`
 
-# Disk Visual:
-# 100 Characters (1% resolution)
-# [====================================================================================================]
-SCALE=100
+# If *ANY* command line options, skip extra debug output!
+if [[ ! $1 ]]; then
 
-# 20 Characters (5% resolution)
-# [=========================]
-# SCALE=20
+	# Verbose Mode START
+	echo "Checking SDA partitions..."
+	echo ""
 
-# Compute Used/Free
-USED=$(($DISKUSE % $SCALE))
-FREE=$(($SCALE - $USED))
+	# Display all SDA partitions
+	echo "SDA partitions"
+	echo "--------------"
+	df -h | grep Filesystem
+	df -h | grep sda
+	echo ""
 
-# Used
-echo -ne "["
-for i in $(eval echo "{0..$USED}")
-do
-	echo -ne "="
-	# Fun delay just for user to see! (Comment out if not desired)
-	sleep 0.005
-done
+	# Root Partition
+	echo "Root Partition"
+	echo "--------------"
+	df -h | grep Filesystem
+	df -h --type=ext4 | grep sda
 
-# Free
-for n in $(eval echo "{0..$FREE}")
-do
-	echo -ne " "
-	# Fun delay just for user to see! (Comment out if not desired)
-	sleep 0.005
-done
-echo "]"
+	# Disk Visual:
+	# 100 Characters (1% resolution)
+	# [====================================================================================================]
+	SCALE=100
 
-echo "[ Used: $USED% / Free: $FREE% ]"
+	# 20 Characters (5% resolution)
+	# [=========================]
+	# SCALE=20
+
+	# Compute Used/Free
+	USED=$(($DISKUSE % $SCALE))
+	FREE=$(($SCALE - $USED))
+
+	# Used
+	echo -ne "["
+	for i in $(eval echo "{0..$USED}")
+	do
+		echo -ne "="
+		# Fun delay just for user to see! (Comment out if not desired)
+		sleep 0.005
+	done
+
+	# Free
+	for n in $(eval echo "{0..$FREE}")
+	do
+		echo -ne " "
+		# Fun delay just for user to see! (Comment out if not desired)
+		sleep 0.005
+	done
+	echo "]"
+
+	echo "[ Used: $USED% / Free: $FREE% ]"
+
+# Verbose Mode END
+fi
 
 # Summary
 echo ""
