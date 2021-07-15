@@ -36,12 +36,16 @@ if [[ ! $1 ]]; then
 	# SCALE=20
 
 	# Compute Used/Free
-	USED=$(($DISKUSE % $SCALE))
+	if [[ $DISKUSE == 100 ]]; then
+		USED=$SCALE
+	else
+		USED=$(($DISKUSE % $SCALE))
+	fi
 	FREE=$(($SCALE - $USED))
 
 	# Used
 	echo -ne "["
-	for i in $(eval echo "{0..$USED}")
+	for i in $(eval echo "{1..$USED}")
 	do
 		echo -ne "="
 		# Fun delay just for user to see! (Comment out if not desired)
@@ -49,7 +53,7 @@ if [[ ! $1 ]]; then
 	done
 
 	# Free
-	for n in $(eval echo "{0..$FREE}")
+	for n in $(eval echo "{1..$FREE}")
 	do
 		echo -ne " "
 		# Fun delay just for user to see! (Comment out if not desired)
@@ -58,19 +62,21 @@ if [[ ! $1 ]]; then
 	echo "]"
 
 	echo "[ Used: $USED% / Free: $FREE% ]"
+	echo ""
 
 # Verbose Mode END
 fi
 
 # Summary
-echo ""
 echo "The root partition is $DISKUSE% full."
 
 # Warnings
-if   [[ $DISKUSE > 95 ]]; then
-	echo "***** Disk is over 95% full!!! *****"
-elif [[ $DISKUSE > 90 ]]; then
-	echo "*** Disk is over 90% full! ***"
-elif [[ $DISKUSE > 80 ]]; then
-	echo "Disk is over 80% full!"
+if   [[ $DISKUSE -ge 99 ]]; then
+	echo -e "\n******* CRITICAL: Disk is over 99% full!!! *******"
+elif [[ $DISKUSE -ge 95 ]]; then
+	echo -e "\n***** WARNING: Disk is over 95% full!!! *****"
+elif [[ $DISKUSE -ge 90 ]]; then
+	echo -e "\n*** WARNING: Disk is over 90% full! ***"
+elif [[ $DISKUSE -ge 80 ]]; then
+	echo -e "\nNOTICE: Disk is over 80% full!"
 fi
