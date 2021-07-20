@@ -3,6 +3,11 @@
 # Check root partition
 DISKUSE=`df --type=ext4 | grep sda | grep -o "..%" | grep -o ".."`
 
+# Hack until I figure out proper grep/sed command to handle 3 digits (100%).
+if [[ $DISKUSE == 00 ]]; then
+	DISKUSE=100;
+fi
+
 # If "quiet" command line option is given, skip extra debug output!
 if [[ $1 != quiet ]]; then
 
