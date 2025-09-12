@@ -4,7 +4,7 @@
 echo ""
 echo "C Source and Header Files (*.c, *.h)"
 echo "------------------------------------"
-for source_file in $(find . -type f -name "*.[c,h]"); do
+find . -type f -name "*.[c,h]" | while read -r source_file; do
 	dos2unix -v -S "$source_file"
 done
 
@@ -12,14 +12,14 @@ done
 echo ""
 echo "C++ Source and Header Files (*.cpp, *.hpp)"
 echo "------------------------------------------"
-for source_file in $(find . -type f -name "*.[c,h]pp"); do
+find . -type f -name "*.[c,h]pp" | while read -r source_file; do
 	dos2unix -v -S "$source_file"
 done
 
 echo ""
 echo "C++ Source and Header Files (*.cxx, *.hxx)"
 echo "------------------------------------------"
-for source_file in $(find . -type f -name "*.[c,h]xx"); do
+find . -type f -name "*.[c,h]xx" | while read -r source_file; do
 	dos2unix -v -S "$source_file"
 done
 
@@ -27,7 +27,7 @@ done
 echo ""
 echo "Bash Script Files (*.sh)"
 echo "------------------------"
-for source_file in $(find . -type f -name "*.sh"); do
+find . -type f -name "*.sh" | while read -r source_file; do
 	dos2unix -v -S "$source_file"
 done
 
