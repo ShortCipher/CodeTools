@@ -34,16 +34,17 @@ int main(int argc, char *argv[])
 		}
 		printf("\n");
 
-	#ifdef DEBUG
-		printf("Debug: Bitfield value is %u\n", bitfield);
+		#ifdef DEBUG
+		printf("Hex: 0x%X\n", bitfield);
+		printf("Int: %u\n", bitfield);
 		// Check and print which bits are set
 		for (int i = 0; i < 32; i++) {
 			if (bitfield & (1 << i)) {
 				printf("Bit %d is set\n", i);
 			}
 		}
-	#endif
-
+		printf("\n");
+		#endif
 	}
 
 	return 0;
