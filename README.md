@@ -16,6 +16,11 @@ Code Tools
 A collection of source code tools / scripts.
 
 
+Code
+----
+* binary.c - Convert numbers to binary.
+
+
 Formatting Scripts
 ------------------
 * clean_space.sh      - Remove trailing whitespace from code lines.
