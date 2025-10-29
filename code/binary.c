@@ -10,11 +10,12 @@ int main(int argc, char *argv[])
 
 	// Usage message (if no arguments are provided).
 	if (argc == 1) {
-		printf("Usage: %s <number1> <number2> ...\n", argv[0]);
+		printf("Usage: %s <num1> <num2> ...\n", argv[0]);
 		return 1;
 	}
 
-	printf("Convert to Binary:\n");
+	printf("Convert to Binary\n");
+	printf("-----------------\n");
 
 	// Process each command line argument
 	for (int i = 1; i < argc; i++) {
